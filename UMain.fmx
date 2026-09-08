@@ -1,0 +1,544 @@
+object MainForm: TMainForm
+  Left = 0
+  Top = 0
+  Caption = 'FNC Database Report Generator Sample'
+  ClientHeight = 820
+  ClientWidth = 1320
+  FormFactor.Width = 320
+  FormFactor.Height = 568
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnClose = FormClose
+  DesignerMasterStyle = 0
+  object Background: TRectangle
+    Align = Contents
+    Fill.Color = xFFF4F7FB
+    Size.Width = 1320.000000000000000000
+    Size.Height = 820.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+  end
+  object HeaderBackground: TRectangle
+    Align = Top
+    Fill.Color = xFF12233F
+    Size.Width = 1320.000000000000000000
+    Size.Height = 92.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    object LabelBrand: TLabel
+      StyledSettings = []
+      Position.X = 28.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 180.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = xFF73A4FF
+      Text = 'TMS FNC DATAGRID'
+    end
+    object LabelTitle: TLabel
+      StyledSettings = []
+      Position.X = 28.000000000000000000
+      Position.Y = 36.000000000000000000
+      Size.Width = 640.000000000000000000
+      Size.Height = 42.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 29.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = claWhite
+      Text = 'FNC Database Report Generator Sample'
+    end
+    object ButtonConfig: TButton
+      StyledSettings = []
+      Hint = 'Configure data source'
+      Position.X = 1252.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 44.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      Text = #9881
+      TextSettings.Font.Family = 'Segoe UI Symbol'
+      TextSettings.Font.Size = 22.000000000000000000
+      TextSettings.FontColor = xFF12233F
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = ButtonConfigClick
+    end
+  end
+  object ExportBar: TRectangle
+    Align = Top
+    Fill.Color = xFFEDF3FD
+    Margins.Left = 22.000000000000000000
+    Margins.Top = 10.000000000000000000
+    Margins.Right = 22.000000000000000000
+    Position.X = 22.000000000000000000
+    Position.Y = 102.000000000000000000
+    Size.Width = 1276.000000000000000000
+    Size.Height = 54.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = xFFDCE4F0
+    XRadius = 10.000000000000000000
+    YRadius = 10.000000000000000000
+    object LabelExport: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 12.000000000000000000
+      Size.Width = 170.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = xFF314562
+      Text = 'EXPORT VIEW AS'
+    end
+    object ButtonHTML: TButton
+      Position.X = 182.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'HTML'
+      OnClick = ExportClick
+    end
+    object ButtonJSON: TButton
+      Tag = 1
+      Position.X = 300.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'JSON'
+      OnClick = ExportClick
+    end
+    object ButtonPDF: TButton
+      Tag = 2
+      Position.X = 418.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'PDF'
+      OnClick = ExportClick
+    end
+    object ButtonCSV: TButton
+      Tag = 3
+      Position.X = 536.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'CSV'
+      OnClick = ExportClick
+    end
+    object ButtonXLS: TButton
+      Tag = 4
+      Position.X = 654.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'XLS'
+      OnClick = ExportClick
+    end
+    object ButtonXLSX: TButton
+      Tag = 5
+      Position.X = 772.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'XLSX'
+      OnClick = ExportClick
+    end
+  end
+  object ViewBar: TRectangle
+    Align = Top
+    Fill.Color = xFFEDF3FD
+    Margins.Left = 22.000000000000000000
+    Margins.Top = 10.000000000000000000
+    Margins.Right = 22.000000000000000000
+    Position.X = 22.000000000000000000
+    Position.Y = 166.000000000000000000
+    Size.Width = 1276.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = xFFDCE4F0
+    XRadius = 10.000000000000000000
+    YRadius = 10.000000000000000000
+    object LabelView: TLabel
+      StyledSettings = []
+      Position.X = 16.000000000000000000
+      Position.Y = 14.000000000000000000
+      Size.Width = 84.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = xFF314562
+      Text = 'VIEW'
+    end
+    object CheckFiltering: TCheckBox
+      IsChecked = True
+      Position.X = 110.000000000000000000
+      Position.Y = 13.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Filtering'
+      OnChange = CheckFilteringChange
+    end
+    object CheckAdvancedFilter: TCheckBox
+      Position.X = 228.000000000000000000
+      Position.Y = 13.000000000000000000
+      Size.Width = 160.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Advanced filtering'
+      OnChange = CheckAdvancedFilterChange
+    end
+    object CheckConditionalFormat: TCheckBox
+      Position.X = 400.000000000000000000
+      Position.Y = 13.000000000000000000
+      Size.Width = 200.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Conditional formatting'
+      OnChange = CheckConditionalFormatChange
+    end
+    object ButtonEditRules: TButton
+      Enabled = False
+      Position.X = 612.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 140.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Edit Rules...'
+      OnClick = ButtonEditRulesClick
+    end
+    object ButtonColumns: TButton
+      Position.X = 764.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Columns...'
+      OnClick = ButtonColumnsClick
+    end
+    object ButtonSaveSettings: TButton
+      Position.X = 896.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 160.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Save current settings'
+      OnClick = ButtonSaveSettingsClick
+    end
+    object ButtonLoadSettings: TButton
+      Position.X = 1064.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 140.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Load settings'
+      OnClick = ButtonLoadSettingsClick
+    end
+  end
+  object Grid: TTMSFNCDataGrid
+    Align = Client
+    Margins.Left = 22.000000000000000000
+    Margins.Top = 10.000000000000000000
+    Margins.Right = 22.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Size.Width = 1276.000000000000000000
+    Size.Height = 544.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    ShowAcceleratorChar = False
+    Footer.Bar.Buttons = <>
+    Header.VisualGrouping.Layout.TextMargins.Left = 3.000000000000000000
+    Header.VisualGrouping.Layout.TextMargins.Top = 3.000000000000000000
+    Header.VisualGrouping.Layout.TextMargins.Right = 3.000000000000000000
+    Header.VisualGrouping.Layout.TextMargins.Bottom = 3.000000000000000000
+    Header.Bar.Buttons = <>
+    CellAppearance.FilterMatchLayout.TextMargins.Left = 3.000000000000000000
+    CellAppearance.FilterMatchLayout.TextMargins.Top = 3.000000000000000000
+    CellAppearance.FilterMatchLayout.TextMargins.Right = 3.000000000000000000
+    CellAppearance.FilterMatchLayout.TextMargins.Bottom = 3.000000000000000000
+    CellAppearance.FilterInverseMatchLayout.TextMargins.Left = 3.000000000000000000
+    CellAppearance.FilterInverseMatchLayout.TextMargins.Top = 3.000000000000000000
+    CellAppearance.FilterInverseMatchLayout.TextMargins.Right = 3.000000000000000000
+    CellAppearance.FilterInverseMatchLayout.TextMargins.Bottom = 3.000000000000000000
+    CellAppearance.BandLayout.TextMargins.Left = 3.000000000000000000
+    CellAppearance.BandLayout.TextMargins.Top = 3.000000000000000000
+    CellAppearance.BandLayout.TextMargins.Right = 3.000000000000000000
+    CellAppearance.BandLayout.TextMargins.Bottom = 3.000000000000000000
+    CellAppearance.FixedLayout.TextMargins.Left = 3.000000000000000000
+    CellAppearance.FixedLayout.TextMargins.Top = 3.000000000000000000
+    CellAppearance.FixedLayout.TextMargins.Right = 3.000000000000000000
+    CellAppearance.FixedLayout.TextMargins.Bottom = 3.000000000000000000
+    CellAppearance.FixedSelectedLayout.TextMargins.Left = 3.000000000000000000
+    CellAppearance.FixedSelectedLayout.TextMargins.Top = 3.000000000000000000
+    CellAppearance.FixedSelectedLayout.TextMargins.Right = 3.000000000000000000
+    CellAppearance.FixedSelectedLayout.TextMargins.Bottom = 3.000000000000000000
+    CellAppearance.FocusedLayout.TextMargins.Left = 3.000000000000000000
+    CellAppearance.FocusedLayout.TextMargins.Top = 3.000000000000000000
+    CellAppearance.FocusedLayout.TextMargins.Right = 3.000000000000000000
+    CellAppearance.FocusedLayout.TextMargins.Bottom = 3.000000000000000000
+    CellAppearance.GroupLayout.TextMargins.Left = 3.000000000000000000
+    CellAppearance.GroupLayout.TextMargins.Top = 3.000000000000000000
+    CellAppearance.GroupLayout.TextMargins.Right = 3.000000000000000000
+    CellAppearance.GroupLayout.TextMargins.Bottom = 3.000000000000000000
+    CellAppearance.NormalLayout.TextMargins.Left = 3.000000000000000000
+    CellAppearance.NormalLayout.TextMargins.Top = 3.000000000000000000
+    CellAppearance.NormalLayout.TextMargins.Right = 3.000000000000000000
+    CellAppearance.NormalLayout.TextMargins.Bottom = 3.000000000000000000
+    CellAppearance.SelectedLayout.TextMargins.Left = 3.000000000000000000
+    CellAppearance.SelectedLayout.TextMargins.Top = 3.000000000000000000
+    CellAppearance.SelectedLayout.TextMargins.Right = 3.000000000000000000
+    CellAppearance.SelectedLayout.TextMargins.Bottom = 3.000000000000000000
+    CellAppearance.SummaryLayout.TextMargins.Left = 3.000000000000000000
+    CellAppearance.SummaryLayout.TextMargins.Top = 3.000000000000000000
+    CellAppearance.SummaryLayout.TextMargins.Right = 3.000000000000000000
+    CellAppearance.SummaryLayout.TextMargins.Bottom = 3.000000000000000000
+    ConditionalFormatting = <>
+    Columns = <>
+    FilterActions = <>
+    SortIndicatorAppearance.IndexFont.Size = 8.000000000000000000
+    SortIndicatorAppearance.IndexFont.Color = claNull
+  end
+  object StatusBackground: TRectangle
+    Align = Bottom
+    Fill.Color = claWhite
+    Position.Y = 778.000000000000000000
+    Size.Width = 1320.000000000000000000
+    Size.Height = 42.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = xFFDCE4F0
+    object LabelStatus: TLabel
+      Align = Left
+      Margins.Left = 22.000000000000000000
+      Position.X = 22.000000000000000000
+      Size.Width = 650.000000000000000000
+      Size.Height = 42.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 11.000000000000000000
+      TextSettings.FontColor = xFF12233F
+      Text = 'Ready'
+    end
+    object LabelOutput: TLabel
+      Align = Client
+      Margins.Right = 22.000000000000000000
+      Size.Width = 626.000000000000000000
+      Size.Height = 42.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 10.000000000000000000
+      TextSettings.FontColor = xFF73829A
+      TextSettings.HorzAlign = Trailing
+      Text = 'Output'
+    end
+  end
+  object ColumnsPanel: TRectangle
+    Fill.Color = claWhite
+    Position.X = 764.000000000000000000
+    Position.Y = 330.000000000000000000
+    Size.Width = 300.000000000000000000
+    Size.Height = 380.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = xFFB9C6DA
+    Visible = False
+    XRadius = 8.000000000000000000
+    YRadius = 8.000000000000000000
+    object LabelColumns: TLabel
+      Align = Top
+      StyledSettings = []
+      Margins.Left = 14.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 14.000000000000000000
+      Position.X = 14.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 272.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = xFF12233F
+      Text = 'Show columns'
+    end
+    object ColumnsListBox: TListBox
+      Align = Client
+      Margins.Left = 12.000000000000000000
+      Margins.Top = 4.000000000000000000
+      Margins.Right = 12.000000000000000000
+      Margins.Bottom = 4.000000000000000000
+      Size.Width = 276.000000000000000000
+      Size.Height = 290.000000000000000000
+      Size.PlatformDefault = False
+      DisableFocusEffect = True
+      DefaultItemStyles.ItemStyle = ''
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      ShowCheckboxes = True
+      OnChangeCheck = ColumnsListBoxChangeCheck
+      Viewport.Width = 276.000000000000000000
+      Viewport.Height = 292.000000000000000000
+    end
+    object ButtonColumnsClose: TButton
+      Align = Bottom
+      Margins.Left = 12.000000000000000000
+      Margins.Right = 12.000000000000000000
+      Margins.Bottom = 12.000000000000000000
+      Position.X = 12.000000000000000000
+      Position.Y = 334.000000000000000000
+      Size.Width = 276.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Close'
+      OnClick = ButtonColumnsCloseClick
+    end
+  end
+  object ConnectionPanel: TRectangle
+    Fill.Color = claWhite
+    Position.X = 390.000000000000000000
+    Position.Y = 180.000000000000000000
+    Size.Width = 540.000000000000000000
+    Size.Height = 196.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = xFFB9C6DA
+    Visible = False
+    XRadius = 8.000000000000000000
+    YRadius = 8.000000000000000000
+    object LabelConnTitle: TLabel
+      StyledSettings = []
+      Position.X = 20.000000000000000000
+      Position.Y = 14.000000000000000000
+      Size.Width = 500.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.FontColor = xFF12233F
+      Text = 'Configure data source (SQLite)'
+    end
+    object LabelDatabase: TLabel
+      Position.X = 20.000000000000000000
+      Position.Y = 58.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Database file'
+    end
+    object EditDatabase: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Position.X = 150.000000000000000000
+      Position.Y = 54.000000000000000000
+      Size.Width = 280.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'path to a .sqlite file'
+    end
+    object ButtonConnDbBrowse: TButton
+      Position.X = 438.000000000000000000
+      Position.Y = 52.000000000000000000
+      Size.Width = 72.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'File...'
+      OnClick = ButtonConnDbBrowseClick
+    end
+    object LabelTable: TLabel
+      Position.X = 20.000000000000000000
+      Position.Y = 98.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Table'
+    end
+    object ComboTable: TComboBox
+      Position.X = 150.000000000000000000
+      Position.Y = 94.000000000000000000
+      Size.Width = 360.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      OnChange = ComboTableChange
+    end
+    object ButtonConnect: TButton
+      Position.X = 150.000000000000000000
+      Position.Y = 140.000000000000000000
+      Size.Width = 150.000000000000000000
+      Size.Height = 36.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Connect / Run'
+      OnClick = ButtonConnectClick
+    end
+    object ButtonConnCancel: TButton
+      Position.X = 320.000000000000000000
+      Position.Y = 140.000000000000000000
+      Size.Width = 150.000000000000000000
+      Size.Height = 36.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Close'
+      OnClick = ButtonConnCancelClick
+    end
+  end
+  object OpenDialog: TOpenDialog
+    Left = 1200
+    Top = 740
+  end
+  object Adapter: TTMSFNCDataGridDatabaseAdapter
+    Size.Width = 26.000000000000000000
+    Size.Height = 26.000000000000000000
+    Size.PlatformDefault = False
+    Columns = <>
+    Left = 1136
+    Top = 740
+  end
+  object PDFIO: TTMSFNCDataGridPDFIO
+    Size.Width = 26.000000000000000000
+    Size.Height = 26.000000000000000000
+    Size.PlatformDefault = False
+    Options.DefaultFont.Name = 'Arial'
+    Options.Margins.Left = 20.000000000000000000
+    Options.Margins.Top = 50.000000000000000000
+    Options.Margins.Right = 20.000000000000000000
+    Options.Margins.Bottom = 50.000000000000000000
+    Options.HeaderFont.Name = 'Arial'
+    Options.FooterFont.Name = 'Arial'
+    Options.HeaderMargins.Left = 20.000000000000000000
+    Options.HeaderMargins.Top = 5.000000000000000000
+    Options.HeaderMargins.Right = 20.000000000000000000
+    Options.HeaderMargins.Bottom = 5.000000000000000000
+    Options.FooterMargins.Left = 20.000000000000000000
+    Options.FooterMargins.Top = 5.000000000000000000
+    Options.FooterMargins.Right = 20.000000000000000000
+    Options.FooterMargins.Bottom = 5.000000000000000000
+    Options.PageNumberMargins.Left = 20.000000000000000000
+    Options.PageNumberMargins.Top = 5.000000000000000000
+    Options.PageNumberMargins.Right = 20.000000000000000000
+    Options.PageNumberMargins.Bottom = 5.000000000000000000
+    Options.PageNumberFont.Name = 'Arial'
+    Left = 1256
+    Top = 740
+  end
+  object ExcelIO: TTMSFNCDataGridExcelIO
+    Size.Width = 26.000000000000000000
+    Size.Height = 26.000000000000000000
+    Size.PlatformDefault = False
+    DataGrid = Grid
+    Options.ExportOverwriteMessage = 'File %s already exists'#13'Ok to overwrite ?'
+    UseUnicode = False
+    Version = '3.24'
+    Left = 1200
+    Top = 740
+  end
+  object Connection: TFDConnection
+    LoginPrompt = False
+    Left = 968
+    Top = 740
+  end
+  object Query: TFDQuery
+    Connection = Connection
+    Left = 1024
+    Top = 740
+  end
+  object DataSource: TDataSource
+    DataSet = Query
+    Left = 1080
+    Top = 740
+  end
+end
